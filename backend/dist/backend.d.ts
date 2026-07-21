@@ -1,0 +1,32 @@
+import type { Transporter } from 'nodemailer';
+import type { Config } from './types.js';
+export declare class Backend {
+    private static readonly _cacheTTL;
+    private static readonly _pinResendCooldownMilliseconds;
+    private static readonly _messages;
+    private static readonly _wwwRoot;
+    private static readonly _regex;
+    private static _maskEmail;
+    private static _safeError;
+    private static _csvParse;
+    private readonly _app;
+    private readonly _transport;
+    private readonly _spreadsheetId;
+    private readonly _host;
+    private readonly _port;
+    private readonly _configSheets;
+    private readonly _smtpFrom;
+    private readonly _smtpFromName;
+    private readonly _users;
+    private readonly _logger;
+    private _cleanup;
+    private _servicesCache;
+    private _server;
+    constructor(config: Config, transportOverride?: Transporter);
+    start(): Promise<void>;
+    stop(): Promise<void>;
+    private _wrongPin;
+    private _sendPin;
+    private _fetchSheetCsv;
+    private _getServices;
+}

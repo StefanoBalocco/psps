@@ -1,0 +1,491 @@
+/* ---------------------------------------------------------------------------
+   Base — warm canvas
+   --------------------------------------------------------------------------- */
+
+body {
+	background: var( --psps-paper );
+	color: var( --psps-ink );
+}
+
+/* ---------------------------------------------------------------------------
+   Full-bleed app container (overrides Chota .container)
+   --------------------------------------------------------------------------- */
+
+#app {
+	max-width: none;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Password masked / revealed
+   --------------------------------------------------------------------------- */
+
+.password-masked {
+	font-family: monospace;
+	letter-spacing: 0.15em;
+}
+
+.password-revealed {
+	font-family: monospace;
+}
+
+.card {
+	margin-bottom: 1rem;
+}
+
+.warning {
+	background: #fff3cd;
+	border: 1px solid #ffeeba;
+	border-radius: 4px;
+	padding: 0.5rem;
+	margin: 0.25rem 0;
+	font-size: 0.85rem;
+}
+
+.resend-block {
+	margin-top: 1rem;
+	text-align: center;
+}
+
+.resend-timer {
+	font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------------------
+   Login — warm paper/terracotta OTP panel
+   --------------------------------------------------------------------------- */
+
+:root {
+	--psps-paper: #f7f1e8;
+	--psps-surface: #fffaf5;
+	--psps-ink: #3d2e22;
+	--psps-muted: #7a6552;
+	--psps-terracotta: #b5532f;
+	--psps-terracotta-hover: #913d26;
+	--psps-border: #d9c9b3;
+	--psps-input: #fdf8f2;
+	--psps-error-bg: #fdecea;
+	--psps-error-border: #e8b4a0;
+	--psps-error-ink: #8a3b1d;
+}
+
+.login-shell {
+	min-height: 100vh;
+	min-height: 100dvh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var( --psps-paper );
+}
+
+.login-panel {
+	width: 100%;
+	padding: 2rem 1.5rem;
+	box-sizing: border-box;
+	background: var( --psps-paper );
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+.step-label {
+	font-size: 0.75rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var( --psps-muted );
+	margin-bottom: 0.25rem;
+}
+
+.step-progress {
+	font-weight: 400;
+	text-transform: none;
+	letter-spacing: normal;
+}
+
+.step-rule {
+	border: none;
+	border-top: 2px solid var( --psps-terracotta );
+	margin: 0 0 1.25rem 0;
+	width: 2.5rem;
+}
+
+.login-panel h2 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.35rem;
+	font-weight: 700;
+	color: var( --psps-ink );
+	margin: 0 0 0.35rem 0;
+}
+
+.login-panel p {
+	font-size: 0.9rem;
+	color: var( --psps-muted );
+	margin: 0 0 0.25rem 0;
+}
+
+.login-panel label {
+	display: block;
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var( --psps-ink );
+	margin: 1rem 0 0.35rem 0;
+}
+
+.login-panel input[type="email"] {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.65rem 0.75rem;
+	font-size: 0.95rem;
+	font-family: system-ui, -apple-system, sans-serif;
+	color: var( --psps-ink );
+	background: var( --psps-input );
+	border: 1px solid var( --psps-border );
+	border-radius: 6px;
+	outline: none;
+}
+
+.login-panel input[type="email"]:focus-visible {
+	border-color: var( --psps-terracotta );
+	box-shadow: 0 0 0 2px rgba( 181, 83, 47, 0.25 );
+}
+
+.button-primary {
+	display: block;
+	width: 100%;
+	padding: 0.7rem 1rem;
+	margin-top: 1rem;
+	font-size: 0.95rem;
+	font-weight: 600;
+	font-family: system-ui, -apple-system, sans-serif;
+	color: #fff;
+	background: var( --psps-terracotta );
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.button-primary:hover {
+	background: var( --psps-terracotta-hover );
+}
+
+.button-primary:active {
+	background: var( --psps-terracotta-hover );
+}
+
+.button-primary:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.button-primary:focus-visible {
+	outline: 2px solid var( --psps-terracotta );
+	outline-offset: 2px;
+}
+
+/* ---- OTP boxes ---- */
+
+.otp-group {
+	display: flex;
+	gap: 0.5rem;
+	justify-content: center;
+	margin: 1rem 0 0.5rem;
+}
+
+.otp-input {
+	width: 3rem;
+	height: 3.5rem;
+	text-align: center;
+	font-size: 1.4rem;
+	font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
+	font-variant-numeric: tabular-nums;
+	color: var( --psps-ink );
+	background: var( --psps-input );
+	border: 1px solid var( --psps-border );
+	border-radius: 6px;
+	caret-color: var( --psps-terracotta );
+	outline: none;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.otp-input:focus-visible {
+	border-color: var( --psps-terracotta );
+	box-shadow: 0 0 0 2px rgba( 181, 83, 47, 0.25 );
+}
+
+@media ( max-width: 30rem ) {
+	.otp-input {
+		width: 2.6rem;
+		height: 3.1rem;
+		font-size: 1.2rem;
+	}
+	.login-panel {
+		padding: 1.5rem 1rem;
+	}
+}
+
+/* ---- Desktop/tablet login ---- */
+
+@media ( min-width: 48rem ) {
+	.login-shell {
+		padding: 2rem 1rem;
+	}
+	.login-panel {
+		max-width: 32rem;
+		background: var( --psps-surface );
+		border: 1px solid var( --psps-border );
+		border-radius: 8px;
+		box-shadow: 0 2px 8px rgba( 0, 0, 0, 0.06 );
+	}
+}
+
+/* ---- Accounts grid ---- */
+
+.accounts-list {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1rem;
+	padding: 1rem;
+	background: var( --psps-paper );
+}
+
+@media ( min-width: 40rem ) {
+	.accounts-list {
+		grid-template-columns: repeat( 2, 1fr );
+	}
+}
+
+@media ( min-width: 56rem ) {
+	.accounts-list {
+		grid-template-columns: repeat( 3, 1fr );
+	}
+}
+
+@media ( min-width: 72rem ) {
+	.accounts-list {
+		grid-template-columns: repeat( 4, 1fr );
+	}
+}
+
+/* ---- Account cards ---- */
+
+.account-card {
+	background: var( --psps-surface );
+	border: 1px solid var( --psps-border );
+	border-radius: 8px;
+	padding: 1rem;
+	margin: 0;
+}
+
+.account-card .field-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	margin-bottom: 0.5rem;
+}
+
+.account-card .field-row:last-child {
+	margin-bottom: 0;
+}
+
+.account-card .field-label {
+	font-weight: 600;
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var( --psps-muted );
+	width: 100%;
+	margin-bottom: 0.15rem;
+}
+
+.account-card .field-value {
+	min-width: 0;
+	overflow-wrap: anywhere;
+	word-break: break-word;
+	color: var( --psps-ink );
+}
+
+.account-card .link-external {
+	flex: 1;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.account-card .action-group {
+	margin-left: auto;
+	display: flex;
+	gap: 0.25rem;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+/* ---- Icon buttons ---- */
+
+.icon-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	min-height: 44px;
+	padding: 0.5rem;
+	background: none;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	cursor: pointer;
+	color: var( --psps-muted );
+	box-sizing: border-box;
+}
+
+.icon-button:hover {
+	background: rgba( 0, 0, 0, 0.05 );
+	color: var( --psps-ink );
+}
+
+.icon-button:active {
+	background: rgba( 0, 0, 0, 0.1 );
+}
+
+.icon-button:focus-visible {
+	outline: 2px solid var( --psps-terracotta );
+	outline-offset: 2px;
+	border-color: var( --psps-terracotta );
+}
+
+.icon-button svg {
+	display: block;
+}
+
+.icon-button .icon-hide {
+	display: none;
+}
+
+.icon-button.is-revealed .icon-show {
+	display: none;
+}
+
+.icon-button.is-revealed .icon-hide {
+	display: inline;
+}
+
+/* ---- Link-style button ---- */
+
+.link-button {
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0.25rem 0;
+	font: inherit;
+	font-size: 0.85rem;
+	color: var( --psps-terracotta );
+	text-decoration: underline;
+	cursor: pointer;
+	display: inline;
+}
+
+.link-button:hover {
+	color: var( --psps-terracotta-hover );
+}
+
+.link-button:focus-visible {
+	outline: 2px solid var( --psps-terracotta );
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+/* ---- Error ---- */
+
+.error-banner {
+	background: var( --psps-error-bg );
+	border: 1px solid var( --psps-error-border );
+	border-radius: 6px;
+	padding: 0.55rem 0.75rem;
+	margin: 0.75rem 0;
+	font-size: 0.85rem;
+	color: var( --psps-error-ink );
+}
+
+/* ---- Screen-reader-only ---- */
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect( 0, 0, 0, 0 );
+	white-space: nowrap;
+	border: 0;
+}
+
+/* ---- Status ---- */
+
+[role="status"] {
+	display: inline-block;
+	margin: 0.5rem 0;
+	font-size: 0.85rem;
+	color: var( --psps-muted );
+}
+
+/* ---- Reduced motion ---- */
+
+@media ( prefers-reduced-motion: reduce ) {
+	.login-shell,
+	.login-panel,
+	.button-primary,
+	.otp-input,
+	.error-banner,
+	.icon-button {
+		transition: none !important;
+		animation: none !important;
+	}
+}
+
+/* ---- Dark mode ---- */
+
+@media ( prefers-color-scheme: dark ) {
+	:root {
+		--bg-color: #1a1512;
+		--color-primary: #d97757;
+		--color-darkGrey: #d4c8b8;
+		--color-grey: #4a3d33;
+		--color-lightGrey: #2d2520;
+		--color-error: #f85a4a;
+	}
+	.card {
+		background: var( --color-lightGrey );
+		border-color: var( --color-grey );
+	}
+	.card-content {
+		color: var( --color-darkGrey );
+	}
+	.account-card {
+		background: var( --color-lightGrey );
+		border-color: var( --color-grey );
+	}
+	.warning {
+		background: #3b2a1a;
+		border-color: #6b4a2a;
+		color: #f0d9b5;
+	}
+
+	/* Login dark tokens */
+	:root {
+		--psps-paper: #1a1512;
+		--psps-surface: #2d2520;
+		--psps-ink: #e8dccd;
+		--psps-muted: #a89380;
+		--psps-terracotta: #d97757;
+		--psps-terracotta-hover: #e18a6b;
+		--psps-border: #4a3d33;
+		--psps-input: #2a221c;
+		--psps-error-bg: #3b1f1b;
+		--psps-error-border: #754333;
+		--psps-error-ink: #ffc0aa;
+	}
+}

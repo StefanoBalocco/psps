@@ -1,0 +1,28 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"rootDir": "src",
+		"outDir": ".",
+		"lib": [ "ESNext", "DOM", "DOM.Iterable" ],
+		"strict": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"strictPropertyInitialization": true,
+		"noImplicitThis": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"declaration": false,
+		"sourceMap": false,
+		"paths": {
+			"@stefanobalocco/jtdal": [ "../node_modules/@stefanobalocco/jtdal/jTDAL.d.ts" ],
+			"@stefanobalocco/myopie.js": [ "../node_modules/@stefanobalocco/myopie.js/myopie.d.ts" ],
+			"@stefanobalocco/jfsmrouter": [ "../node_modules/@stefanobalocco/jfsmrouter/jFSMRouter.d.ts" ]
+		}
+	},
+	"include": [ "src/**/*.ts" ],
+	"exclude": [ "node_modules" ]
+}

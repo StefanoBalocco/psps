@@ -1,0 +1,71 @@
+{
+  "name": "psps",
+  "version": "1.0.0",
+  "description": "Password sharing manager backed by Google Sheets with one-shot PIN authentication via email.",
+  "private": true,
+  "type": "module",
+  "author": "Stefano Balocco <stefano.balocco@gmail.com>",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "credentials",
+    "email-auth",
+    "google-sheets",
+    "hono",
+    "nodemailer",
+    "one-time-pin",
+    "password-sharing",
+    "passwords",
+    "pin-auth",
+    "secret-management",
+    "self-hosted"
+  ],
+  "homepage": "https://github.com/StefanoBalocco/psps",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StefanoBalocco/psps.git"
+  },
+  "bugs": {
+    "url": "https://github.com/StefanoBalocco/psps/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node build.mjs all",
+    "build:backend": "node build.mjs backend",
+    "build:frontend": "node build.mjs frontend",
+    "build:tests": "node build.mjs tests",
+    "start": "node backend/dist/index.js",
+    "tests": "c8 --reporter=text --reporter=lcov ava --verbose"
+  },
+  "imports": {
+    "#backend/*": "./backend/dist/*",
+    "#frontend/*": "./www/*"
+  },
+  "ava": {
+    "files": [
+      "tests/dist/**/*.test.js"
+    ]
+  },
+  "dependencies": {
+    "@hono/node-server": "~2",
+    "@stefanobalocco/jfsmrouter": "~2",
+    "@stefanobalocco/myopie.js": "~1",
+    "@stefanobalocco/zeptologger": "~2",
+    "hono": "~4",
+    "nodemailer": "~8",
+    "undici": "~8",
+    "zod": "~4"
+  },
+  "devDependencies": {
+    "@stefanobalocco/tersercompanion": "~1",
+    "@stefanobalocco/jtdal": "~5",
+    "@types/node": "~22",
+    "@types/nodemailer": "~8",
+    "ava": "~8",
+    "c8": "~10",
+    "jsdom": "~26",
+    "terser": "~5",
+    "typescript": "~6"
+  }
+}

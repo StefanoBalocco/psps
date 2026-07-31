@@ -6,7 +6,7 @@ import { execFileSync, spawn } from 'node:child_process';
 import { PassThrough } from 'node:stream';
 import { ZeptoLogger } from '@stefanobalocco/zeptologger';
 import { getGlobalDispatcher, MockAgent, setGlobalDispatcher } from 'undici';
-import { Backend } from '#backend/backend.js';
+import { Backend } from '../../backend/dist/backend.js';
 // Global backend tracker for cleanup
 const _backends = [];
 test.after.always('cleanup backends', async () => {

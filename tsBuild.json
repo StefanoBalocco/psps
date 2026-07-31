@@ -1,0 +1,55 @@
+[
+  {
+    "target": "backend",
+    "prefix": "backend",
+    "tsConfig": "tsconfig.json",
+    "name": "Backend"
+  },
+  {
+    "target": "frontend",
+    "prefix": "frontend",
+    "tsConfig": "tsconfig.json",
+    "name": "Frontend",
+    "minify": {
+      "files": [
+        "dist/app.js"
+      ],
+      "terser": true,
+      "terserCompanion": true
+    },
+    "copy": [
+      {
+        "destination": "www",
+        "files": [
+          "dist/app.min.js",
+          "style.css"
+        ],
+        "clean": true
+      }
+    ],
+    "templates": [
+      {
+        "filename": "index.html",
+        "destination": "www",
+        "variables": [
+          {
+            "name": "mtimeStyleCss",
+            "type": "mtime",
+            "value": "../www/style.css"
+          },
+          {
+            "name": "mtimeAppMinJs",
+            "type": "mtime",
+            "value": "../www/app.min.js"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "target": "tests",
+    "prefix": "tests",
+    "tsConfig": "tsconfig.json",
+    "name": "Tests"
+  }
+]

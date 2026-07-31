@@ -1,0 +1,23 @@
+{
+	"host": "127.0.0.1",
+	"port": 3008,
+	"log": "",
+	"corsOrigins": [
+		"*"
+	],
+	"trustedProxies": [],
+	"spreadsheetId": "1aDw_6dwQfveWnLT0oC_nXR979et7bALWgS7YXEI-yjM",
+	"sheets": {
+		"accounts": "accounts",
+		"admins": "admins"
+	},
+	"smtp": {
+		"host": "in-v3.mailjet.com​",
+		"port": 465,
+		"secure": true,
+		"user": "7b9a7abe1537feef9999608ada12d1af",
+		"pass": "5da755d2e92422a5870d4577c5c8ce0b",
+		"fromAddress": "psps@fastcable.biz",
+		"fromName": "PSPS"
+	}
+}

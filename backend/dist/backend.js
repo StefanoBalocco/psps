@@ -47,7 +47,6 @@ export class Backend {
         }
         return returnValue;
     }
-    // ponytail: kept as private static so direct CSV regression tests catch regressions
     static _csvParse(csv) {
         const returnValue = [];
         const csvLength = csv.length;
@@ -322,7 +321,6 @@ export class Backend {
         }));
     }
     async start() {
-        // Start cleanup interval
         this._cleanup = setInterval(() => {
             const now = Date.now();
             this._users.forEach((item) => {
@@ -337,7 +335,6 @@ export class Backend {
             });
         }, 3600000);
         this._cleanup.unref();
-        // Start server
         this._server = serve({
             fetch: this._app.fetch,
             hostname: this._host,
@@ -417,7 +414,6 @@ export class Backend {
                         parts.push(`responseCode=${responseCode}`);
                     }
                     const command = errRecord.command;
-                    // ponytail: exact allowlist, no regex for command filtering
                     const allowedCommands = new Set(['AUTH LOGIN', 'AUTH PLAIN', 'EHLO', 'HELO', 'STARTTLS', 'MAIL FROM', 'RCPT TO', 'DATA', 'CONN']);
                     const commandStr = ('string' === typeof command && allowedCommands.has(command)) ? command : '';
                     if (commandStr) {
@@ -431,7 +427,6 @@ export class Backend {
                         const msg = errRecord.message;
                         const msgStr = ('string' === typeof msg) ? msg : '';
                         let causeLabel = '';
-                        // ponytail: only already-approved tokens scanned from message, never emit content
                         if (/\bECONNREFUSED\b/.test(msgStr)) {
                             causeLabel = 'connection-refused';
                         }
@@ -524,3 +519,4 @@ export class Backend {
         return this._servicesCache;
     }
 }
+//# sourceMappingURL=backend.js.map

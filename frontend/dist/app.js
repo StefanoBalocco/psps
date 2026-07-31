@@ -1,9 +1,6 @@
 import jTDAL from '@stefanobalocco/jtdal';
 import Myopie from '@stefanobalocco/myopie.js';
 import router from '@stefanobalocco/jfsmrouter';
-// ---------------------------------------------------------------------------
-// App class
-// ---------------------------------------------------------------------------
 export class App {
     static _renderEngine = new jTDAL();
     static _templates = {
@@ -150,7 +147,6 @@ export class App {
         }, () => {
             return true;
         }, () => {
-            // no redirect from login
         });
         router.routeAdd('app', '/accounts', () => {
             this._myopie.set('page', 'accounts', false);
@@ -473,7 +469,6 @@ export class App {
                 const index = parseInt(indexStr, 10);
                 const rawValue = target.value;
                 const sanitized = rawValue.replace(/\D/g, '');
-                // Normal digit input
                 if (1 >= sanitized.length) {
                     target.value = sanitized.slice(0, 1);
                     const digits = this._syncPinFromInputs();
@@ -485,7 +480,6 @@ export class App {
                     }
                 }
                 else {
-                    // Browser autofill / multi-digit paste-in-place
                     this._replacePinDigits(sanitized);
                     const digits = this._myopie.get('pin');
                     if (6 === digits.length) {
@@ -541,7 +535,6 @@ export class App {
         }
     }
     _handlePinDigitFocus(event) {
-        // Select existing content on focus for easy overwrite
         const target = event.currentTarget;
         if (null !== target) {
             target.select();
@@ -629,7 +622,6 @@ export class App {
                         await navigator.clipboard.writeText(rawPassword);
                     }
                     catch (_err) {
-                        // Clipboard API might not be available
                     }
                 }
             }
@@ -638,3 +630,4 @@ export class App {
 }
 export const app = new App();
 await app.start();
+//# sourceMappingURL=app.js.map

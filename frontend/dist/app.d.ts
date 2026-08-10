@@ -1,0 +1,35 @@
+export declare class App {
+    private static _renderEngine;
+    private static _templates;
+    private _myopie;
+    private _resendInterval;
+    private _isVerifying;
+    private _resendNext;
+    constructor();
+    start(): Promise<void>;
+    private static _maskEmail;
+    private static _renderView;
+    private _startResendTimer;
+    private _stopResendTimer;
+    private _updateResendRemaining;
+    private _formatTimer;
+    private _getPinInputs;
+    private _syncPinFromInputs;
+    private _replacePinDigits;
+    private _clearPinInputs;
+    private _focusPinInput;
+    private _restorePinFocus;
+    private _verifyPin;
+    private _handleEmailSubmit;
+    private _doEmailRequest;
+    private _handlePinSubmit;
+    private _handlePinDigitInput;
+    private _handlePinDigitKeyDown;
+    private _handlePinDigitPaste;
+    private _handlePinDigitFocus;
+    private _handleChangeEmail;
+    private _handleResendPin;
+    private _handleTogglePassword;
+    private _handleCopyPassword;
+}
+export declare const app: App;

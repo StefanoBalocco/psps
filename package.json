@@ -1,6 +1,6 @@
 {
   "name": "psps",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Password sharing manager backed by Google Sheets with one-shot PIN authentication via email.",
   "private": true,
   "type": "module",
@@ -31,41 +31,31 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "node build.mjs all",
-    "build:backend": "node build.mjs backend",
-    "build:frontend": "node build.mjs frontend",
-    "build:tests": "node build.mjs tests",
+    "build": "tsBuild all",
+    "build:backend": "tsBuild backend",
+    "build:frontend": "tsBuild frontend",
+    "build:tests": "tsBuild tests",
     "start": "node backend/dist/index.js",
-    "tests": "c8 --reporter=text --reporter=lcov ava --verbose"
-  },
-  "imports": {
-    "#backend/*": "./backend/dist/*",
-    "#frontend/*": "./www/*"
-  },
-  "ava": {
-    "files": [
-      "tests/dist/**/*.test.js"
-    ]
+    "tests": "c8 --include=backend/src --include=backend/dist --include=frontend/src --include=frontend/dist --exclude-after-remap --per-file --reporter=text --reporter=lcov ava 'tests/dist/*.test.js' --verbose"
   },
   "dependencies": {
-    "@hono/node-server": "~2",
-    "@stefanobalocco/jfsmrouter": "~2",
-    "@stefanobalocco/myopie.js": "~1",
-    "@stefanobalocco/zeptologger": "~2",
-    "hono": "~4",
-    "nodemailer": "~8",
-    "undici": "~8",
-    "zod": "~4"
+    "@hono/node-server": "^2",
+    "@stefanobalocco/zeptologger": "^2",
+    "hono": "^4",
+    "nodemailer": "^9",
+    "undici": "^8",
+    "zod": "^4"
   },
   "devDependencies": {
-    "@stefanobalocco/tersercompanion": "~1",
-    "@stefanobalocco/jtdal": "~5",
-    "@types/node": "~22",
-    "@types/nodemailer": "~8",
-    "ava": "~8",
-    "c8": "~10",
-    "jsdom": "~26",
-    "terser": "~5",
-    "typescript": "~6"
+    "@stefanobalocco/jfsmrouter": "^3",
+    "@stefanobalocco/myopie.js": "^2",
+    "@stefanobalocco/jtdal": "^6",
+    "@stefanobalocco/tsbuild": "^1",
+    "@types/node": "^24",
+    "@types/jsdom": "^28",
+    "@types/nodemailer": "^8",
+    "ava": "^8",
+    "c8": "^10",
+    "jsdom": "^28"
   }
 }

@@ -12,8 +12,8 @@ import { ZeptoLogger } from '@stefanobalocco/zeptologger';
 import type { Hono } from 'hono';
 import type { Dispatcher } from 'undici';
 import { getGlobalDispatcher, MockAgent, setGlobalDispatcher } from 'undici';
-import { Backend } from '#backend/backend.js';
-import type { Config, Nullable } from '#backend/types.js';
+import { Backend } from '../../backend/dist/backend.js';
+import type { Config, Nullable } from '../../backend/dist/types.js';
 
 // Global backend tracker for cleanup
 const _backends: Backend[] = [];

@@ -764,25 +764,25 @@ test( 'accounts template external link contains sr-only opens in a new tab', ( t
 } );
 
 // ---------------------------------------------------------------------------
-// Prefix-contract: frontend/app.js and frontend/app.min.js must exist
+// Dist-contract: frontend/dist/app.js and frontend/dist/app.min.js must exist
 // ---------------------------------------------------------------------------
 
-test( 'frontend/app.js and frontend/app.min.js exist after build', ( t ) => {
+test( 'frontend/dist/app.js and frontend/dist/app.min.js exist after build', ( t ) => {
 	const frontendPath: string = path.resolve( __dirname, '../../frontend' );
-	const appJsPath: string = path.resolve( frontendPath, 'app.js' );
-	const appMinJsPath: string = path.resolve( frontendPath, 'app.min.js' );
-	t.true( fs.existsSync( appJsPath ), 'frontend/app.js must exist after build' );
-	t.true( fs.existsSync( appMinJsPath ), 'frontend/app.min.js must exist after build' );
+	const appJsPath: string = path.resolve( frontendPath, 'dist/app.js' );
+	const appMinJsPath: string = path.resolve( frontendPath, 'dist/app.min.js' );
+	t.true( fs.existsSync( appJsPath ), 'frontend/dist/app.js must exist after build' );
+	t.true( fs.existsSync( appMinJsPath ), 'frontend/dist/app.min.js must exist after build' );
 	const minContent: string = fs.readFileSync( appMinJsPath, 'utf-8' );
-	t.true( 0 < minContent.length, 'frontend/app.min.js must be non-empty' );
+	t.true( 0 < minContent.length, 'frontend/dist/app.min.js must be non-empty' );
 } );
 
 // ---------------------------------------------------------------------------
 // jTDAL import — must use scoped specifier (@stefanobalocco/jtdal) for browser import-map compat
 // ---------------------------------------------------------------------------
 
-test( 'frontend/app.min.js imports @stefanobalocco/jtdal, not bare jtdal', ( t ) => {
-	const appMinJsPath: string = path.resolve( __dirname, '../../frontend/app.min.js' );
+test( 'frontend/dist/app.min.js imports @stefanobalocco/jtdal, not bare jtdal', ( t ) => {
+	const appMinJsPath: string = path.resolve( __dirname, '../../frontend/dist/app.min.js' );
 	const content: string = fs.readFileSync( appMinJsPath, 'utf-8' );
 	t.true( -1 !== content.indexOf( '@stefanobalocco/jtdal' ), 'app.min.js must import "@stefanobalocco/jtdal"' );
 	t.false( -1 !== content.indexOf( '"jtdal"' ), 'app.min.js must NOT import bare "jtdal"' );
@@ -925,7 +925,7 @@ test.serial( 'full user journey: email validation, OTP, resend, verification, ac
 
 	// ---- Import the minified bundle (triggers bootstrap) ----
 	// @ts-expect-error — no .d.ts for minified bundle, side-effect-only import
-	await import( '../../frontend/app.min.js' );
+	await import( '../../frontend/dist/app.min.js' );
 	await new Promise( ( resolve: ( value: void ) => void ): void => { setTimeout( resolve, 150 ); } );
 
 	const appEl: Nullable<HTMLElement> = doc.getElementById( 'app' ) as Nullable<HTMLElement>;
